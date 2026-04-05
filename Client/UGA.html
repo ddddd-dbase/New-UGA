@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        text-align: center;
+        place-items: center;
+        background-color: black;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-weight: 400;
+        color: rgb(205, 205, 205);
+      }
+      button {
+        border-radius: 5px;
+        width: 50%;
+        height: 40px;
+        border-style: solid;
+        border-width: 1px;
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+        font-size: 15px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-weight: 600;
+        border-color: rgb(255, 255, 255);
+        letter-spacing: 1px;
+      }
+      h2 {
+        font-size: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      h3 {
+        font-size: 15px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      h1 {
+        font-family: Tahoma, Geneva, sans-serif;
+        font-size: 30px;
+        letter-spacing: 2px;
+        word-spacing: 0.6px;
+        font-weight: 700;
+        text-decoration: none;
+        font-style: italic;
+        font-variant: normal;
+        text-transform: none;
+        color: rgb(21, 255, 0);
+      }
+      p {
+        font-size: 14px;
+        margin: 5px;
+      }
+      a {
+        color: white;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        filter: brightness(30%);
+      }
+      main {
+        width: 43%;
+        height: 60%;
+        border-radius: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px;
+        border-color: rgba(21, 255, 0, 0.616);
+        border-style: solid;
+      }
+      form {
+        border: 2px;
+        border-style: solid;
+        border-color: white;
+        width: 20%;
+        height: 60%;
+        border-radius: 20px;
+        position: absolute;
+        top: 20%;
+      }
+      div {
+        width: 80%;
+        height: 80%;
+        border: 2px;
+        position: absolute;
+        border-style: solid;
+        border-color: rgb(14, 171, 0);
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 20px;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+      esc {
+        background-color: rgba(0, 0, 0, 0.9);
+        border: 1px;
+        border-color: rgb(30, 30, 30);
+        border-style: solid;
+        position: absolute;
+        z-index: 1000;
+        top: 0px;
+        height: 20px;
+        width: 12%;
+        left: 50%;
+        transform: translate(-50%, -17px);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        transition: transform 0.1s ease-out;
+        display: none;
+      }
+      esc:hover {
+        transform: translate(-50%, -2px);
+      }
+      esc p {
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgb(19, 229, 0);
+        transform: translate(0px, -3px);
+        letter-spacing: 1px;
+        font-weight: 550;
+      }
+      iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 99.6%;
+        height: 99.6%;
+        border: none;
+        z-index: 999;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        transition: all 0.4s ease-in-out;
+      }
+      .hidden {
+        opacity: 0;
+        transform: translate(-50%, -150%);
+        pointer-events: none;
+      }
+      select {
+        width: 60%;
+        border-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        border-width: 2px;
+      }
+      option:checked {
+        background-color: rgb(39, 39, 39);
+      }
+    </style>
+    <title>New Tab</title>
+  </head>
+  <body>
+    <img
+      src="https://wallpapers.com/images/featured/cool-black-background-zuepoib34iujg4he.jpg"
+    />
+    <main>
+      <br />
+      <h1>UGA</h1>
+      <h3 style="color: rgb(93, 93, 93)">+ Upgraded Cloaxer</h3>
+      <h2>UGA:</h2>
+      <button onclick="uga()">Open UGA</button>
+      <br />
+      <h2>Cloaxer:</h2>
+      <p>
+        Press the prompt button below, and enter your url (without https://
+        before it).
+      </p>
+      <button onclick="opencloak('https://'+prompt('URL:'))">Prompt</button>
+      <br />
+      <br />
+      <p>
+        <i
+          ><small
+            >Credits: Made by https://github.com/ddddd-dbase (UGA dev) - No Ai
+            Used.
+          </small></i
+        >
+      </p>
+    </main>
+    <form style="right: 5%">
+      <h2>Settings</h2>
+      <h3>Auto self-cloak on launch</h3>
+      <p>(requires popups to be enabled)</p>
+      <input type="checkbox" id="self-cloak" />
+      <h3>Replace original tab</h3>
+      <input type="checkbox" id="replacemain" class="reqcloak" />
+      <p>
+        (Do note that Cloaxer links will not open in a new tab in cloaked form.)
+      </p>
+    </form>
+    <form style="left: 5%">
+      <h2>Suggestions</h2>
+      <p>Got suggestions for UGA? Fill out the form below.</p>
+      <br />
+      <button
+        type="button"
+        style="position: absolute; top: 85%; transform: translate(-50%, -50%)"
+        onclick="openIFrame('https://forms.office.com/r/Q1b91AwsJ1')"
+      >
+        Open Form
+      </button>
+    </form>
+    <div id="popup">
+      <br />
+      <h1>Welcome to UGA</h1>
+      <h3 style="color: rgb(93, 93, 93)">
+        Please turn on auto self-cloak and replace original tab.
+      </h3>
+      <h2>New UGA:</h2>
+      <p>
+        As you may have noticed, this isn't exactly like the old UGA. Instead,
+        it's more of a launcher for random stuff.<br />
+        Press the Open UGA button to open the version of UGA with links (Games).
+      </p>
+      <h2>Upgraded Cloaxer</h2>
+      <p>
+        Cloaxer has been upgraded! It now asks you input a link to cloak, and
+        also doesn't require popup permission anymore due to it just being a
+        button now. <br />
+        Cloaxer is used to about:blank cloak sites, and it is <u>NOT</u> a
+        proxy. <br />About:blank cloaking makes it harder for the actual site to
+        be blocked, and makes it much harder for teachers to dyknow it.
+      </p>
+      <h2>Other</h2>
+      <p>
+        Self-cloaking and settings: Simple cloaking settings.<br />
+        Suggestions form: I will ban you if you spam, so please be normal.
+        <br />
+        <b
+          ><u
+            >Important: To close the currently viewed site, press the button at
+            the very top center of the page.</u
+          ></b
+        >
+      </p>
+      <br />
+      <p>Wait 10 seconds before closing this popup. (button turns white)</p>
+      <br />
+      <button
+        onclick="closepopup()"
+        id="closepop"
+        style="
+          pointer-events: none;
+          color: rgb(50, 50, 50);
+          border-color: rgb(50, 50, 50);
+        "
+      >
+        Close
+      </button>
+    </div>
+    <esc id="escbutton">
+      <p>Home</p>
+    </esc>
+  </body>
+  <script>
+    const escbutton = document.getElementById("escbutton");
+    function opencloak(url) {
+      if (URL.canParse(url) && url != "https://null") {
+        let inFrame;
+        try {
+          inFrame = window !== top;
+        } catch (e) {
+          inFrame = true;
+        }
+        if (!localStorage.getItem("ab")) localStorage.setItem("ab", true);
+        if (!inFrame && localStorage.getItem("ab") === "true") {
+          const popup = open("about:blank", "_blank");
+          setTimeout(() => {
+            if (!popup || popup.closed) {
+              alert(
+                "Popups are required for UGA self-cloaking. Please enable them :)"
+              );
+            } else {
+              const doc = popup.document;
+              const iframe = doc.createElement("iframe");
+              const style = iframe.style;
+              const link = doc.createElement("link");
+              doc.title = "My Drive - Google Drive";
+              link.rel = "icon";
+              link.href =
+                "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png";
+
+              //const urlParams = new URLSearchParams(window.location.search);
+              //const targetUrl = urlParams.get("url");
+
+              const siteToLoad = url ? decodeURIComponent(url) : location.href;
+
+              iframe.src = siteToLoad;
+              style.position = "fixed";
+              style.top = style.bottom = style.left = style.right = 0;
+              style.border = style.outline = "none";
+              style.width = style.height = "100%";
+              doc.head.appendChild(link);
+              doc.body.appendChild(iframe);
+
+              if (localStorage.getItem("replacecloak") == "true") {
+                location.replace("https://google.com");
+              }
+
+              const script = doc.createElement("script");
+              script.textContent = `
+          window.onbeforeunload = function (event) {
+            const confirmationMessage = 'Leave Site?';
+            (event || window.event).returnValue = confirmationMessage;
+            return confirmationMessage;
+          };
+        `;
+              doc.head.appendChild(script);
+            }
+          }, 1000);
+        } else {
+          openIFrame(url);
+        }
+      } else {
+        alert("Improper URL. (ex: example.com )");
+      }
+    }
+    function uga() {
+      openIFrame("http://127.0.0.1:5500/index.html");
+    }
+    function openIFrame(url) {
+      const iframe = document.createElement("iframe");
+      iframe.src = url;
+      iframe.id = "delete";
+      document.body.appendChild(iframe);
+      escbutton.style.display = "block";
+    }
+    const replacemain = document.getElementById("replacemain");
+    const selfcloak = document.getElementById("self-cloak");
+    if (localStorage.getItem("cloak") == "true") {
+      let inFrame;
+      try {
+        inFrame = window !== top;
+      } catch (e) {
+        inFrame = true;
+      }
+      selfcloak.checked = true;
+      if (!inFrame) {
+        opencloak(window.location.href);
+      }
+    }
+    if (localStorage.getItem("replacecloak") == "true") {
+      replacemain.checked = true;
+    }
+    selfcloak.addEventListener("change", (event) => {
+      if (event.currentTarget.checked) {
+        localStorage.setItem("cloak", "true");
+      } else {
+        localStorage.setItem("cloak", "false");
+      }
+    });
+    replacemain.addEventListener("change", (event) => {
+      if (event.currentTarget.checked) {
+        localStorage.setItem("replacecloak", "true");
+      } else {
+        localStorage.setItem("replacecloak", "false");
+      }
+    });
+    escbutton.addEventListener("click", () => {
+      const todelete = document.getElementById("delete");
+      if (todelete) {
+        todelete.classList.add("hidden");
+        setTimeout(() => {
+          todelete.remove();
+        }, 400);
+      }
+      escbutton.style.display = "none";
+    });
+    const select = document.getElementById("embedselect");
+    function embedopen() {
+      console.log(select.value);
+      if (select.value != "about:blank") {
+        openIFrame(select.value);
+      }
+    }
+    const popup = document.getElementById("popup");
+    const closepopupbutton = document.getElementById("closepop");
+    if (!localStorage.getItem("f")) {
+      setTimeout(() => {
+        closepopupbutton.style.pointerEvents = "auto";
+        closepopupbutton.style.color = "rgb(255,255,255)";
+        closepopupbutton.style.borderColor = "rgb(255,255,255)";
+      }, 10000);
+    } else {
+      popup.remove();
+    }
+    function closepopup() {
+      localStorage.setItem("f", true);
+      popup.remove();
+    }
+
+    /*window.addEventListener("beforeunload", (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    });*/
+  </script>
+</html>
