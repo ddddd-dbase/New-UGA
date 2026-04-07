@@ -166,7 +166,7 @@
       <h1>UGA</h1>
       <h3 style="color: rgb(93, 93, 93)">+ Upgraded Cloaxer</h3>
       <h2>UGA:</h2>
-      <button onclick="uga()">Open UGA</button>
+      <button onclick="openIFrame('https://example.com')">Open UGA</button>
       <br />
       <h2>Cloaxer:</h2>
       <p>
@@ -322,9 +322,6 @@
       } else {
         alert("Improper URL. (ex: example.com )");
       }
-    }
-    function uga() {
-      openIFrame("http://127.0.0.1:5500/index.html");
     }
     function openIFrame(url) {
       const iframe = document.createElement("iframe");

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const ugaContent = `
+       <style>
+         body {
+           text-align: center;
+           place-items: center;
+           background-color: black;
+           font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+           font-weight: 400;
+           color: rgb(205, 205, 205);
+           margin: 0;
+           overflow: hidden;
+         }
+         button {
+           border-radius: 5px; width: 50%; height: 40px; border-style: solid; border-width: 1px;
+           color: rgb(255, 255, 255); background-color: rgb(0, 0, 0); font-size: 15px;
+           font-family: inherit; font-weight: 600; border-color: rgb(255, 255, 255); letter-spacing: 1px;
+           cursor: pointer;
+         }
+         h2 { font-size: 20px; font-family: Verdana, Geneva, sans-serif; }
+         h3 { font-size: 15px; font-family: Verdana, Geneva, sans-serif; }
+         h1 {
+           font-family: Tahoma, Geneva, sans-serif; font-size: 30px; letter-spacing: 2px;
+           font-weight: 700; font-style: italic; color: rgb(21, 255, 0);
+         }
+         p { font-size: 14px; margin: 5px; }
+         img.bg-image {
+           width: 100%; height: 100%; position: absolute; top: 50%; left: 50%;
+           transform: translate(-50%, -50%); filter: brightness(30%); z-index: -1;
+         }
+         main {
+           width: 43%; height: 60%; border-radius: 20px; position: absolute;
+           top: 50%; left: 50%; transform: translate(-50%, -50%);
+           border: 2px solid rgba(21, 255, 0, 0.616);
+         }
+         form {
+           border: 2px solid white; width: 20%; height: 60%; border-radius: 20px;
+           position: absolute; top: 20%; background: rgba(0,0,0,0.5);
+         }
+         #popup {
+           width: 80%; height: 80%; border: 2px solid rgb(14, 171, 0);
+           position: absolute; background-color: rgba(0, 0, 0, 0.9);
+           border-radius: 20px; transform: translate(-50%, -50%);
+           top: 50%; left: 50%; z-index: 2000;
+         }
+         #escbutton {
+           background-color: rgba(0, 0, 0, 0.9); border: 1px solid rgb(30, 30, 30);
+           position: absolute; z-index: 1000; top: 0px; height: 20px; width: 12%;
+           left: 50%; transform: translate(-50%, -17px); border-bottom-left-radius: 10px;
+           border-bottom-right-radius: 10px; transition: transform 0.1s ease-out;
+           display: none; cursor: pointer;
+         }
+         #escbutton:hover { transform: translate(-50%, -2px); }
+         #escbutton p { color: rgb(19, 229, 0); transform: translate(0px, -3px); font-weight: 550; }
+         iframe#delete {
+           position: absolute; top: 50%; left: 50%; width: 99.6%; height: 99.6%;
+           border: none; z-index: 999; transform: translate(-50%, -50%);
+           transition: all 0.4s ease-in-out;
+         }
+         .hidden { opacity: 0; transform: translate(-50%, -150%) !important; pointer-events: none; }
+       </style>
+   
+       <img class="bg-image" src="https://wallpapers.com/images/featured/cool-black-background-zuepoib34iujg4he.jpg" />
+       
+       <main>
+         <br />
+         <h1>UGA</h1>
+         <h3 style="color: rgb(93, 93, 93)">+ Upgraded Cloaxer</h3>
+         <h2>UGA:</h2>
+         <button id="btn-open-uga">Open UGA</button>
+         <br />
+         <h2>Cloaxer:</h2>
+         <p>Press the prompt button below, and enter your url (without https:// before it).</p>
+         <button id="btn-prompt">Prompt</button>
+         <br /><br />
+         <p><i><small>Credits: Made by https://github.com/ddddd-dbase (UGA dev) - No Ai Used.</small></i></p>
+       </main>
+   
+       <form style="right: 5%">
+         <h2>Settings</h2>
+         <h3>Auto self-cloak on launch</h3>
+         <p>(requires popups to be enabled)</p>
+         <input type="checkbox" id="self-cloak" />
+         <h3>Replace original tab</h3>
+         <input type="checkbox" id="replacemain" />
+         <p>(Do note that Cloaxer links will not open in a new tab in cloaked form.)</p>
+       </form>
+   
+       <form style="left: 5%">
+         <h2>Suggestions</h2>
+         <p>Got suggestions for UGA? Fill out the form below.</p>
+         <br />
+         <button type="button" id="btn-suggestions" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%)">
+           Open Form
+         </button>
+       </form>
+   
+       <div id="popup">
+         <br />
+         <h1>Welcome to UGA</h1>
+         <h3 style="color: rgb(93, 93, 93)">Please turn on auto self-cloak and replace original tab.</h3>
+         <h2>New UGA:</h2>
+         <p>As you may have noticed, this isn't exactly like the old UGA...</p>
+         <h2>Upgraded Cloaxer</h2>
+         <p>Cloaxer has been upgraded! It now asks you input a link to cloak...</p>
+         <h2>Other</h2>
+         <p>Important: To close the currently viewed site, press the button at the very top center of the page.</p>
+         <br />
+         <p>Wait 10 seconds before closing this popup. (button turns white)</p>
+         <br />
+         <button id="closepop" style="pointer-events: none; color: rgb(50, 50, 50); border-color: rgb(50, 50, 50);">Close</button>
+       </div>
+   
+       <div id="escbutton"><p>Home</p></div>
+   `;
+
+      document.body.innerHTML = "";
+      document.body.innerHTML = ugaContent;
+
+      const escbutton = document.getElementById("escbutton");
+      const replacemain = document.getElementById("replacemain");
+      const selfcloak = document.getElementById("self-cloak");
+      const closepopupbutton = document.getElementById("closepop");
+      const popup = document.getElementById("popup");
+
+      function openIFrame(url) {
+        const iframe = document.createElement("iframe");
+        const url2 = btoa(url);
+        iframe.src = url2;
+        iframe.id = "delete";
+        document.body.appendChild(iframe);
+        escbutton.style.display = "block";
+        setTimeout(() => {
+          iframe.src = atob(url2);
+        }, 500);
+      }
+
+      function opencloak(url) {
+        if (URL.canParse(url) && url !== "https://null") {
+          let inFrame = window !== top;
+          if (!localStorage.getItem("ab")) localStorage.setItem("ab", "true");
+
+          if (!inFrame && localStorage.getItem("ab") === "true") {
+            const win = window.open("about:blank", "_blank");
+            if (!win) {
+              alert("Popups are required for UGA self-cloaking.");
+              return;
+            }
+            const doc = win.document;
+            const iframe = doc.createElement("iframe");
+            doc.title = "My Drive - Google Drive";
+
+            iframe.src = url;
+            Object.assign(iframe.style, {
+              position: "fixed",
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              border: "none",
+              outline: "none",
+              width: "100%",
+              height: "100%",
+            });
+
+            doc.body.appendChild(iframe);
+            if (localStorage.getItem("replacecloak") === "true") {
+              location.replace("https://google.com");
+            }
+          } else {
+            openIFrame(url);
+          }
+        } else {
+          alert("Improper URL. (ex: example.com)");
+        }
+      }
+
+      // Event Listeners for Buttons
+      document.getElementById("btn-open-uga").onclick = () =>
+        openIFrame("https://example.com");
+      document.getElementById("btn-prompt").onclick = () =>
+        opencloak("https://" + prompt("URL:"));
+      document.getElementById("btn-suggestions").onclick = () =>
+        openIFrame("https://forms.office.com/r/Q1b91AwsJ1");
+
+      escbutton.onclick = () => {
+        const todelete = document.getElementById("delete");
+        if (todelete) {
+          todelete.classList.add("hidden");
+          setTimeout(() => todelete.remove(), 400);
+        }
+        escbutton.style.display = "none";
+      };
+
+      // Settings Logic
+      if (localStorage.getItem("cloak") === "true") {
+        selfcloak.checked = true;
+        if (window === top) opencloak(window.location.href);
+      }
+
+      if (localStorage.getItem("replacecloak") === "true")
+        replacemain.checked = true;
+
+      selfcloak.onchange = (e) =>
+        localStorage.setItem("cloak", e.target.checked);
+      replacemain.onchange = (e) =>
+        localStorage.setItem("replacecloak", e.target.checked);
+
+      // Popup Timer Logic
+      if (!localStorage.getItem("f")) {
+        setTimeout(() => {
+          closepopupbutton.style.pointerEvents = "auto";
+          closepopupbutton.style.color = "rgb(255,255,255)";
+          closepopupbutton.style.borderColor = "rgb(255,255,255)";
+        }, 10000);
+      } else {
+        if (popup) popup.remove();
+      }
+
+      closepopupbutton.onclick = () => {
+        localStorage.setItem("f", "true");
+        if (popup) popup.remove();
+      };
+    </script>
+  </body>
+</html>
