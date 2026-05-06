@@ -47,13 +47,13 @@ particlesJS("particles-js", {
     detect_on: "canvas", // "canvas" or "window"
     mode: "grab",
     line_linked: {
-      opacity: 0.5,
+      opacity: 0.4,
     },
     events: {
       onclick: {
         enable: true,
         mode: "push", // "push" or "remove"
-        nb: 10,
+        nb: 6,
       },
       onresize: {
         enable: true,
