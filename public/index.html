@@ -241,14 +241,14 @@
                                     <div class="option" id="opt-auto-cloak">
                                         <div class="label">
                                             <h1 class="win-header">Auto self-cloak on launch</h1>
-                                            <input type="checkbox" onchange="updateOption('auto_cloak')">
+                                            <input class="selector" type="checkbox" onchange="updateOption('auto_cloak')">
                                         </div>
                                         <h1 class="win-subheader">(requires popups to be enabled)</h1>
                                     </div>
                                     <div class="option" id="opt-replace-original">
                                         <div class="label">
                                             <h1 class="win-header">Replace original tab</h1>
-                                            <input type="checkbox" onchange="updateOption('replace_original')">
+                                            <input class="selector" type="checkbox" onchange="updateOption('replace_original')">
                                         </div>
                                         <h1 class="win-subheader">(Do note that cloaked links will not open in a new tab
                                             in
@@ -257,16 +257,26 @@
                                     <div class="option" id="opt-show-home">
                                         <div class="label">
                                             <h1 class="win-header">Always show home button</h1>
-                                            <input type="checkbox" onchange="updateOption('show_home')">
+                                            <input class="selector" type="checkbox" onchange="updateOption('show_home')">
                                         </div>
                                         <h1 class="win-subheader">(Reload to fix if broken)</h1>
                                     </div>
                                     <div class="option" id="opt-show-particles">
                                         <div class="label">
                                             <h1 class="win-header">Dynamic background (particles)</h1>
-                                            <input type="checkbox" onchange="updateOption('show_particles')">
+                                            <input class="selector" type="checkbox" onchange="updateOption('show_particles')">
                                         </div>
                                         <h1 class="win-subheader">(Disabling this may improve performance)</h1>
+                                    </div>
+                                    <div class="option" id="opt-theme">
+                                        <div class="label">
+                                            <h1 class="win-header">Theme</h1>
+                                            <select class="selector" onclick="event.stopPropagation()"
+                                                onchange="updateOption('theme')">
+                                                <option value="default">Default</option>
+                                                <option value="purple">Purple</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </section>
                                 <button class="btn" onclick="location.reload()">

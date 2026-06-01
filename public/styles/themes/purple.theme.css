@@ -1,0 +1,19 @@
+:root {
+    --clr-surface-light: #FFFFFF;
+    --clr-surface-dark: #000000;
+    --clr-surface-gray: #909090;
+
+    --clr-surface-0: #000000CC;
+    --clr-surface-1: #323232;
+
+    --clr-primary-0: #c300ff;
+    --clr-primary-1: #d34eff;
+
+    --clr-shadow-dark: #00000097;
+    --clr-shadow-0: #f700ff97;
+    --clr-shadow-1: #e100ff4d;
+
+    --clr-seman-err: #FF0000;
+
+    --clr-border-primary: #ac01b8;
+}

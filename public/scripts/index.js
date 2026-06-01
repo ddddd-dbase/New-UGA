@@ -26,13 +26,18 @@ const splashTexts = [
     "Free candy in settings*",
 ];
 
+const themes = [
+    "purple"
+];
+
 let _activeWindow = "";
 
 let _settings = {
     "auto_cloak": false,
     "replace_original": false,
     "show_home": false,
-    "show_particles": true
+    "show_particles": true,
+    "theme": "default"
 };
 
 let initSettingsApplied = false;
@@ -107,6 +112,34 @@ function getSetting(k) {
     return _settings[k];
 }
 
+function setSelectorValue(sel, v) {
+    if ((sel instanceof HTMLInputElement) &&
+        (sel.type == "checkbox") &&
+        (typeof v == "boolean"))
+    {
+        sel.checked = v;
+    } else if (
+        (sel instanceof HTMLSelectElement) &&
+        (typeof v == "string"))
+    {
+        let optionExists = 
+            Array.from(sel.options).some(option => option.value == v);
+        if (!optionExists) return;
+
+        sel.value = v;
+    }
+}
+
+function getSelectorValue(sel) {
+    if ((sel instanceof HTMLInputElement) &&
+        (sel.type == "checkbox")) {
+        return sel.checked;
+    }
+    else if (sel.value) {
+        return sel.value;
+    }
+}
+
 function updateSetting(k, v) {
     if (!Object.hasOwn(_settings, k)) {
         console.warn(`Failed to apply setting {${k} = ${v}}. ${k} not found`);
@@ -125,20 +158,24 @@ function updateSetting(k, v) {
 }
 
 function updateOptionElements() {
-    let opts = document.getElementById("opts-stack");
+    let opts = document.querySelector("#window-settings .settings");
     if (!opts) return;
 
     let settings = getSettings();
     for (let opt of opts.children) {
-        if (!opt.classList.contains("option")) continue;
+        if (!opt.classList.contains("option")) {
+            console.log("Not an option");
+            continue;
+        }
 
-        let check = opt.querySelector("input");
-        let option = opt.id.slice(4, opt.id.length).replaceAll("-", "_");
+        let selector = opt.querySelector(".selector");
+        let option = opt.id.removePrefix("opt-").replaceAll("-", "_");
+        if (!selector || !Object.hasOwn(settings, option)) {
+            console.log("Can't apply option", option);
+            continue;
+        }
 
-        if (!Object.hasOwn(settings, option)) continue;
-
-        // All settings are boolean options for now so this is fine
-        check.checked = settings[option];
+        setSelectorValue(selector, settings[option]);
     }
 }
 
@@ -147,9 +184,22 @@ function updateOption(opt) {
     let element = document.getElementById(elementId);
     if (!element) return;
 
-    let check = element.querySelector("input");
-    if (!check) return;
-    updateSetting(opt, check.checked);
+    let selector = element.querySelector(".selector");
+    if (!selector) return;
+    updateSetting(opt, getSelectorValue(selector));
+}
+
+function applyTheme(theme) {
+    if (theme == "default" || !themes.includes(theme)) return;
+
+    let themesDir = `https://cdn.jsdelivr.net/gh/${GithubUrl}/public/styles/themes`;
+    let themeFile = `${themesDir}/${theme}.theme.css`;
+
+    let link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = themeFile;
+
+    document.head.appendChild(link);
 }
 
 function applySettings() {
@@ -179,6 +229,7 @@ function applySettingsVisuals() {
         if (!particles) return;
         particles.classList.remove("hide");
     }
+    if (!initSettingsApplied) applyTheme(settings.theme);
 }
 
 function openUrl(id) {

@@ -546,9 +546,13 @@ body {
     font-weight: 400;
     margin: 0px 20px 0px 0px;
 }
-#window-settings .option .label input {
+#window-settings .option .label input,
+#window-settings .option .label .selector {
     accent-color: var(--clr-surface-1);
     margin: 0;
+}
+#window-settings .option .label select.selector {
+    
 }
 #window-settings .option .win-subheader {
     text-align: center;
