@@ -1,0 +1,1 @@
+python scripts\build.py public\index.html -o dist\index.min.html -So dist\UGA.html
