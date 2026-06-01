@@ -1,119 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>New Tab</title>
     <style>
-      html {
-        background-color: #080808;
-      }
+        html { background-color: #080808; }
 
-      #removeme {
-        /* Cover entire screen */
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100vw;
-        height: 100vh;
+        #removeme {
+            /* Cover entire screen */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100vw;
+            height: 100vh;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
 
-        background: transparent;
-        border: none;
+            background: transparent;
+            border: none;
 
-        margin: 0px;
-        padding: 0px;
-      }
+            margin: 0px;
+            padding: 0px;
+        }
 
-      #removeme h1,
-      h3 {
-        color: #ffffff;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
+        #removeme h1, h3 {
+            color: #FFFFFF;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
     </style>
     <script>
-      // Will be replaced when generating via build script
-      window._CDN_URL = "https://cdn.jsdelivr.net/gh";
-      window._GITHUB_URL = "ddddd-dbase/New-UGA";
-      window._GITHUB_BRANCH = "main";
-      window._OUTPUT_FILE = "public/index.min.html";
+        // Will be replaced when generating via build script
+        window._CDN_URL = "https://cdn.jsdelivr.net/gh";
+        window._GITHUB_URL = "ddddd-dbase/New-UGA"
+        window._GITHUB_BRANCH = "main"
+        window._OUTPUT_FILE = "dist/index.min.html"
     </script>
-  </head>
-  <body>
+</head>
+<body>
     <div id="removeme">
-      <h1 id="loading-text">Loading...</h1>
-      <h3>
-        You shouldn't be here long (Reload the page & check your connection if
-        it's stuck)
-      </h3>
+        <h1 id="loading-text">Loading...</h1>
+        <h3>You shouldn't be here long (Reload the page & check your connection if it's stuck)</h3>
     </div>
 
     <!-- Loading animation -->
     <script>
-      let loadUpdateMs = 200;
-      let loadInterval;
+        let loadUpdateMs = 200;
+        let loadInterval;
 
-      loadInterval = setInterval(() => {
-        let loading = document.getElementById("loading-text");
-        if (!loading) return;
+        loadInterval = setInterval(() => {
+            let loading = document.getElementById("loading-text");
+            if (!loading) return;
 
-        let text = loading.textContent;
-        if (text.endsWith("...")) {
-          text = "Loading";
-        } else {
-          text += ".";
-        }
-      }, loadUpdateMs);
+            let text = loading.textContent;
+            if (text.endsWith("...")) {
+                text = "Loading";
+            } else {
+                text += ".";
+            }
+        }, loadUpdateMs);
     </script>
 
     <!-- !DO NOT CHANGE THIS! -->
     <!-- !THIS SCRIPT IS REQUIRED TO LOAD THE MAIN SITE! -->
     <script>
-      (async () => {
-        const loadInOrder = async (scripts) => {
-          for (const script of scripts) {
-            await new Promise((resolve) => {
-              let scr = document.createElement("script");
-              if (script.src) {
-                scr.src = script.src;
-                scr.onload = resolve;
-                scr.onerror = resolve;
-              } else {
-                scr.textContent = script.textContent;
-                resolve();
-              }
-              document.body.appendChild(scr);
-            });
-          }
-        };
+        (async () => {
+            const loadInOrder = async (scripts) => {
+                for (const script of scripts) {
+                    await new Promise((resolve) => {
+                        let scr = document.createElement("script");
+                        if (script.src) {
+                            scr.src = script.src;
+                            scr.onload = resolve;
+                            scr.onerror = resolve;
+                        } else {
+                            scr.textContent = script.textContent;
+                            resolve();
+                        }
+                        document.body.appendChild(scr);
+                    })
+                }
+            }
 
-        let fp = `${window._CDN_URL}/${window._GITHUB_URL}@${window._GITHUB_BRANCH}/${window._OUTPUT_FILE}`;
+            let fp = `${window._CDN_URL}/${window._GITHUB_URL}@${window._GITHUB_BRANCH}/${window._OUTPUT_FILE}`;
 
-        let res = await fetch(fp);
-        let text = await res.text();
-        let html = text;
+            let res = await fetch(fp);
+            let text = await res.text();
+            let html = text;
 
-        let parser = new DOMParser();
-        let doc = parser.parseFromString(html, "text/html");
-        let scripts = Array.from(doc.querySelectorAll("script"));
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(html, "text/html");
+            let scripts = Array.from(doc.querySelectorAll("script"));
 
-        doc.querySelectorAll("script").forEach((script) => script.remove());
+            doc.querySelectorAll("script").forEach(script => script.remove());
 
-        document.documentElement.innerHTML = doc.documentElement.innerHTML;
+            document.documentElement.innerHTML = doc.documentElement.innerHTML;
 
-        // Necessary for scripts to load properly
-        await loadInOrder(scripts);
-      })();
+            // Necessary for scripts to load properly
+            await loadInOrder(scripts);
+        })();
     </script>
-  </body>
+</body>
 </html>
