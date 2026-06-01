@@ -2,8 +2,6 @@
 
 A small thing for an unblocked game platform called UGA
 
-> Fork of ddddd-dbase's New-UGA
-
 ## Building / Publishing
 
 You have 2 options:
