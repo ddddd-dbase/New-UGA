@@ -96,6 +96,12 @@ body {
     border-top: none;
     background-color: rgba(0, 0, 0, 0.9);
 }
+@supports (corner-bottom-left-shape: bevel) and (corner-bottom-right-shape: bevel) {
+    #esc-btn {
+        corner-bottom-left-shape: bevel;
+        corner-bottom-right-shape: bevel;
+    }
+}
 #esc-btn p {
     text-align: center;
     color: var(--clr-primary-0);
@@ -247,6 +253,11 @@ body {
     height: 100%;
     background-color: var(--clr-surface-0);
     border-radius: 20px;
+}
+@supports (corner-shape: bevel) {
+    .tab-window {
+        corner-shape: bevel;
+    }
 }
 
 /* TAB/CONTENT WINDOWS */
