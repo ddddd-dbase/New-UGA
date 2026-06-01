@@ -412,7 +412,7 @@ function inCurrentWindow(x, y) {
 
     let win = document.getElementById(`window-${active}`);
     if (!win) return true;
-    let bound = win.querySelector(".window-bound");
+    let bound = win.querySelector(".tab-window");
     let tab = document.getElementById(`tab-${active}`);
     if (!bound || !tab) return true;
 
