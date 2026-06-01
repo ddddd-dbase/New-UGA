@@ -89,7 +89,7 @@ body {
     cursor: pointer;
     font-family: var(--font-primary);
     align-self: start;
-    padding: 0.2em 1.5em;
+    padding: 0.4em 6em;
     margin-bottom: 5%;
     border-radius: 0px 0px 8px 8px;
     border: 1px solid var(--clr-surface-1);
@@ -256,6 +256,7 @@ body {
 }
 @supports (corner-shape: bevel) {
     .tab-window {
+        border-radius: 38px;
         corner-shape: bevel;
     }
 }
@@ -552,7 +553,10 @@ body {
     margin: 0;
 }
 #window-settings .option .label select.selector {
-    
+    border: none;
+    border-radius: 2px;
+    background-color: var(--clr-surface-1);
+    color: white;
 }
 #window-settings .option .win-subheader {
     text-align: center;
