@@ -68,8 +68,6 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-
-    z-index: 100;
 }
 #esc-wrapper.hide {
     display: none;
@@ -81,6 +79,7 @@ body {
     height: 100%;
     transform: translateY(-60%);
     transition: transform 0.1s ease-out;
+    z-index: 100;
 }
 #esc-region.show-always {
     transform: translateY(0%);
