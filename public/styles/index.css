@@ -608,6 +608,30 @@ body {
 }
 
 
+#guide-windows {
+    grid-area: 1/1;
+    width: 40vw;
+    height: 80vh;
+}
+
+#guide-windows [id^="guide-"] {
+    z-index: 10;
+    transform: scale(1);
+    transition: transform 0.2s ease-out;
+}
+#guide-windows [id^="guide-"].inactive {
+    transform: scale(0);
+}
+#guide-windows .guide-window {
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid var(--clr-border-primary);
+    box-shadow: inset 0 0 20px 5px var(--clr-shadow-1);
+    background-color: var(--clr-surface-0);
+    border-radius: 20px;
+}
+
+
 #content-presenter {
     overflow: hidden;
     background-color: var(--clr-surface-dark);

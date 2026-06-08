@@ -6,6 +6,9 @@ const windowIds = [
     "info",
     "settings"
 ];
+const guideIds = [
+    // "test"
+];
 
 const urls = {
     "selenite": "https://mail.adriapartners.net",
@@ -31,6 +34,7 @@ const themes = [
 ];
 
 let _activeWindow = "";
+let _activeGuide = "";
 
 let _settings = {
     "auto_cloak": false,
@@ -334,6 +338,33 @@ function makeActive(winId) {
         setActiveWindow(winId);
     }
     updateWindows();
+}
+
+function openGuide(guideId) {
+    if (_activeGuide == guideId) {
+        let g = document.getElementById(`guide-${guideId}`);
+        if (!g) return;
+
+        g.classList.add("inactive");
+        _activeGuide = "";
+        return;
+    }
+    if (_activeGuide === "") {
+        let g = document.getElementById(`guide-${guideId}`);
+        if (!g) return;
+
+        g.classList.remove("inactive");
+        _activeGuide = guideId;
+    } else {
+        let a = document.getElementById(`guide-${_activeGuide}`);
+        if (a) a.classList.add("inactive");
+        
+        let g = document.getElementById(`guide-${guideId}`);
+        if (!g) return;
+
+        g.classList.remove("inactive");
+        _activeGuide = guideId;
+    }
 }
 
 function cloaxerPrompt() {
