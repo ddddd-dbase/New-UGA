@@ -7,7 +7,7 @@ const windowIds = [
     "settings"
 ];
 const guideIds = [
-    /* "test", */
+    "downloads",
 ];
 
 const urls = {
@@ -33,7 +33,6 @@ const themes = [
     "purple"
 ];
 
-// TODO: Edit this
 const LastUpdateTime = 0;
 
 let _activeWindow = "";
@@ -85,9 +84,37 @@ String.prototype.removePrefix = function (s) {
     return this;
 }
 
-function showUpdatePrompt() {
-    // I don't actually know how the update prompt works ngl
-    // TODO: Implement this
+async function cdnDownload(file) {
+    try {
+        let downloadUrl = `https://cdn.jsdelivr.net/gh/${GithubUrl}@main/${file}`;
+        let res = await fetch(downloadUrl, { cache: "no-store" });
+        if (!res.ok) {
+            log(`Failed to fetch ${file} from CDN: ${res.status} ${res.statusText}`, LogLevel.Error);
+            return undefined;
+        }
+        let content = await res.text();
+        return content;
+    } catch (e) {
+        log(`Failed to fetch ${file} from CDN: ${e}`);
+    }
+    return undefined;
+}
+
+async function showUpdatePrompt() {
+    try {
+        let upd = await cdnDownload("dist/LATESTUPDATE");
+        if (!upd) {
+            log(`Failed to get latest update timestamp: CDN returned invalid timestamp`, LogLevel.Warn);
+            return;
+        }
+
+        let ts = new Date(upd);
+        if (ts > new Date(LastUpdateTime)) {
+            log(`Client version out of date!`, LogLevel.Warn);
+        }
+    } catch(e) {
+        log(`Failed to get latest update timestamp: ${e}`, LogLevel.Warn);
+    }
 }
 
 function joinPath(p1, p2) {
@@ -487,6 +514,13 @@ function cloakError(msg) {
     }, 2000);
 }
 
+function getBoundingRect(selector) {
+    let el = document.querySelector(selector);
+    if (!el) return undefined;
+
+    return el.getBoundingClientRect();
+}
+
 function inRect(x, y, rect) {
     return (
         x >= rect.left &&
@@ -500,23 +534,30 @@ function inCurrentWindow(x, y) {
     let active = getActiveWindow();
     if (!active || active.trim() == "") return true;
 
-    let win = document.getElementById(`window-${active}`);
-    if (!win) return true;
-    let bound = win.querySelector(".tab-window");
-    let tab = document.getElementById(`tab-${active}`);
-    if (!bound || !tab) return true;
+    let winBox = getBoundingRect(`#window-${active} .window-bound`);
+    let tabBox = getBoundingRect(`#tab-${active}`);
+    if (!winBox || !tabBox) return true;
 
+    return inRect(x, y, winBox) || inRect(x, y, tabBox);
+}
 
-    let winBox = bound.getBoundingClientRect();
-    let tabBox = tab.getBoundingClientRect();
+function inCurrentGuide(x, y) {
+    if (!_activeGuide || _activeGuide.trim() === "") return true;
 
-    return inRect(x, y, winBox) ||
-        inRect(x, y, tabBox);
+    let gBox = getBoundingRect(`#guide-${_activeGuide}`);
+    let btnBox = getBoundingRect(`#section-guides .guides .${_activeGuide}`);
+    if (!gBox || !btnBox) return true;
+
+    return inRect(x,y,gBox) || inRect(x,y,btnBox);
+}
+
+function isGuideOpen() {
+    return !(_activeGuide.trim() === "");
 }
 
 function isWindowOpen() {
     let current = getActiveWindow();
-    return !(current.trim() == "");
+    return !(current.trim() === "");
 }
 
 async function downloadFile(rp, use_direct = false) {
@@ -544,7 +585,6 @@ async function downloadFile(rp, use_direct = false) {
     _activeWindow = getActiveWindow();
     updateWindows();
     applySettings();
-    showUpdatePrompt();
     initSettingsApplied = true;
 
     window.addEventListener("click", (ev) => {
@@ -554,6 +594,16 @@ async function downloadFile(rp, use_direct = false) {
         if (!inCurrentWindow(ev.x, ev.y))
             makeActive("");
     })
+    window.addEventListener("click", (ev) => {
+        if (isWindowOpen() && !inCurrentWindow(ev.x, ev.y)) {
+            makeActive("");
+        }
+        
+        if (isGuideOpen() && !inCurrentGuide(ev.x, ev.y)) {
+            openGuide(_activeGuide);
+        }
+    });
+
     window.addEventListener("beforeunload", (ev) => {
         if (isIframeOpen()) {
             ev.preventDefault();

@@ -642,6 +642,38 @@ body {
     border-radius: 20px;
 }
 
+.guide-window .win-header {
+    text-align: center;
+    margin-top: 1.5em;
+}
+
+.guide-window h1,
+.guide-window h2,
+.guide-window p {
+    font-family: var(--font-primary);
+    color: var(--clr-primary-0);
+    text-shadow: 0 0 10px var(--clr-shadow-0);
+}
+
+#guide-downloads .content {
+    margin: 0 2em;
+    margin-right: 4em;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+#guide-downloads .downloads-types li {
+    font-family: var(--font-primary);
+    color: var(--clr-primary-0);
+}
+#guide-downloads .downloads-types .head {
+    font-size: 1.1em;
+}
+#guide-downloads .downloads-types p {
+    margin: 0;
+    margin-bottom: 4px;
+    font-size: 0.8em;
+}
 
 #content-presenter {
     overflow: hidden;
