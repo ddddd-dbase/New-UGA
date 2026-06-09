@@ -340,7 +340,8 @@ body {
     font-size: 1.5em;
 }
 
-#section-downloads .downloads {
+#section-downloads .downloads,
+#section-guides .guides {
     margin-top: 1em;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -371,6 +372,16 @@ body {
     font-family: var(--font-primary);
     color: var(--clr-primary-0);
     font-size: 0.85em;
+    text-shadow: 0 0 10px var(--clr-shadow-0);
+}
+
+#section-guides .btn {
+    padding: 1em 2em;
+    min-width: 0;
+    width: 100%;
+}
+#section-guides .btn p {
+    font-size: 1.2em;
     text-shadow: 0 0 10px var(--clr-shadow-0);
 }
 

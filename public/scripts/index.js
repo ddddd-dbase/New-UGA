@@ -7,7 +7,7 @@ const windowIds = [
     "settings"
 ];
 const guideIds = [
-    // "test"
+    /* "test", */
 ];
 
 const urls = {

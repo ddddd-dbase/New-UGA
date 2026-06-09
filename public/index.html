@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css">
 </head>
+
 <body style="margin: 0px; padding: 0px;">
     <div id="background" class="fill-screen">
         <div id="particles-js" class="fill-parent"></div>
@@ -105,10 +107,13 @@
                                 <div id="section-guides">
                                     <h1 class="win-header">Guides</h1>
                                     <p class="win-subheader">(Probably) Coming Soon</p>
-                                    <!-- <button class="btn" onclick="openGuide('test')"
-                                            style="padding: 1em 4em;">
-                                        <p>Test</p>
-                                    </button> -->
+                                    <div class="guides">
+                                        <!--
+                                        <button class="btn" onclick="openGuide('test')">
+                                            <p>Test</p>
+                                        </button>
+                                        -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +154,7 @@
                                     Then click to run (works on virtually any site)
                                 </h2>
                                 <section class="links">
-                                    <a href="javascript:!function(){var e=["#sidebar-wrap%22,%22#advert%22,%22#xrail%22,%22#middle-article-advert-container%22,%22#sponsored-recommendations%22,%22#around-the-web%22,%22#sponsored-recommendations%22,%22#taboola-content%22,%22#taboola-below-taboola-native-thumbnails%22,%22#inarticle_wrapper_div%22,%22#rc-row-container%22,%22#ads%22,%22#at-share-dock%22,%22#at4-share%22,%22#at4-follow%22,%22#right-ads-rail%22,%22div#ad-interstitial%22,%22div#advert-article%22,%22div#ac-lre-player-ph%22,%22.ad%22,%22.avert%22,%22.avert__wrapper%22,%22.middle-banner-ad%22,%22.advertisement%22,%22.GoogleActiveViewClass%22,%22.advert%22,%22.cns-ads-stage%22,%22.teads-inread%22,%22.ad-banner%22,%22.ad-anchored%22,%22.js_shelf_ads%22,%22.ad-slot%22,%22.antenna%22,%22.xrail-content%22,%22.advertisement__leaderboard%22,%22.ad-leaderboard%22,%22.trc_rbox_outer%22,%22.ks-recommended%22,%22.article-da%22,%22div.sponsored-stories-component%22,%22div.addthis-smartlayers%22,%22div.article-adsponsor%22,%22div.signin-prompt%22,%22div.article-bumper%22,%22div.video-placeholder%22,%22div.top-ad-container%22,%22div.header-ad%22,%22div.ad-unit%22,%22div.demo-block%22,%22div.OUTBRAIN%22,%22div.ob-widget%22,%22div.nwsrm-wrapper%22,%22div.announcementBar%22,%22div.partner-resources-block%22,%22div.arrow-down%22,%22div.m-ad%22,%22div.story-interrupt%22,%22div.taboola-recommended%22,%22div.ad-cluster-container%22,%22div.ctx-sidebar%22,%22div.incognito-modal%22,%22.OUTBRAIN%22,%22.subscribe-button%22,%22.ads9%22,%22.leaderboards%22,%22.GoogleActiveViewElement%22,%22.mpu-container%22,%22.ad-300x600%22,%22.tf-ad-block%22,%22.sidebar-ads-holder-top%22,%22.ads-one%22,%22.FullPageModal__scroller%22,%22.content-ads-holder%22,%22.widget-area%22,%22.social-buttons%22,%22.ac-player-ph%22,%22script%22,%22iframe%22,%22video%22,%22aside#sponsored-recommendations%22,aside[role=%22banner%22]%22,%22aside%22,%22amp-ad%22,%22span[id^=ad_is_]%22,%22div[class*=%22indianapolis-optin%22]%22,%22div[id^=google_ads_iframe]%22,%22div[data-google-query-id]%22,%22section[data-response]%22,%22ins.adsbygoogle%22,%22div[data-google-query-id]%22,%22div[data-test-id=%22fullPageSignupModal%22]%22,%22div[data-test-id=%22giftWrap%22]%22];for(let%20a%20in%20e){let%20d=document.querySelectorAll(e[a]);for(let%20e=0;e%3Cd.length;e++){let%20a=d[e];a&&a.parentNode&&a.parentNode.removeChild(a)}}}();">
+                                    <a href="javascript:!function(){var e=[" #sidebar-wrap%22,%22#advert%22,%22#xrail%22,%22#middle-article-advert-container%22,%22#sponsored-recommendations%22,%22#around-the-web%22,%22#sponsored-recommendations%22,%22#taboola-content%22,%22#taboola-below-taboola-native-thumbnails%22,%22#inarticle_wrapper_div%22,%22#rc-row-container%22,%22#ads%22,%22#at-share-dock%22,%22#at4-share%22,%22#at4-follow%22,%22#right-ads-rail%22,%22div#ad-interstitial%22,%22div#advert-article%22,%22div#ac-lre-player-ph%22,%22.ad%22,%22.avert%22,%22.avert__wrapper%22,%22.middle-banner-ad%22,%22.advertisement%22,%22.GoogleActiveViewClass%22,%22.advert%22,%22.cns-ads-stage%22,%22.teads-inread%22,%22.ad-banner%22,%22.ad-anchored%22,%22.js_shelf_ads%22,%22.ad-slot%22,%22.antenna%22,%22.xrail-content%22,%22.advertisement__leaderboard%22,%22.ad-leaderboard%22,%22.trc_rbox_outer%22,%22.ks-recommended%22,%22.article-da%22,%22div.sponsored-stories-component%22,%22div.addthis-smartlayers%22,%22div.article-adsponsor%22,%22div.signin-prompt%22,%22div.article-bumper%22,%22div.video-placeholder%22,%22div.top-ad-container%22,%22div.header-ad%22,%22div.ad-unit%22,%22div.demo-block%22,%22div.OUTBRAIN%22,%22div.ob-widget%22,%22div.nwsrm-wrapper%22,%22div.announcementBar%22,%22div.partner-resources-block%22,%22div.arrow-down%22,%22div.m-ad%22,%22div.story-interrupt%22,%22div.taboola-recommended%22,%22div.ad-cluster-container%22,%22div.ctx-sidebar%22,%22div.incognito-modal%22,%22.OUTBRAIN%22,%22.subscribe-button%22,%22.ads9%22,%22.leaderboards%22,%22.GoogleActiveViewElement%22,%22.mpu-container%22,%22.ad-300x600%22,%22.tf-ad-block%22,%22.sidebar-ads-holder-top%22,%22.ads-one%22,%22.FullPageModal__scroller%22,%22.content-ads-holder%22,%22.widget-area%22,%22.social-buttons%22,%22.ac-player-ph%22,%22script%22,%22iframe%22,%22video%22,%22aside#sponsored-recommendations%22,aside[role=%22banner%22]%22,%22aside%22,%22amp-ad%22,%22span[id^=ad_is_]%22,%22div[class*=%22indianapolis-optin%22]%22,%22div[id^=google_ads_iframe]%22,%22div[data-google-query-id]%22,%22section[data-response]%22,%22ins.adsbygoogle%22,%22div[data-google-query-id]%22,%22div[data-test-id=%22fullPageSignupModal%22]%22,%22div[data-test-id=%22giftWrap%22]%22];for(let%20a%20in%20e){let%20d=document.querySelectorAll(e[a]);for(let%20e=0;e%3Cd.length;e++){let%20a=d[e];a&&a.parentNode&&a.parentNode.removeChild(a)}}}();">
                                         Adblocker
                                     </a>
                                     <a href="javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='https://mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()">
@@ -186,7 +191,7 @@
                                         (UGA dev 2)
                                     </h2>
                                     <h2 class="win-header">
-                                        Fork by 
+                                        Fork by
                                         <a href="https://github.com/HeyItsEquin">Equinox</a>
                                     </h2>
                                     <h2 class="win-header">
@@ -287,8 +292,7 @@
                                     <div class="option" id="opt-theme">
                                         <div class="label">
                                             <h1 class="win-header">Theme</h1>
-                                            <select class="selector" onclick="event.stopPropagation()"
-                                                onchange="updateOption('theme')">
+                                            <select class="selector" onclick="event.stopPropagation()" onchange="updateOption('theme')">
                                                 <option value="default">Default</option>
                                                 <option value="purple">Purple</option>
                                             </select>
@@ -311,11 +315,13 @@
                     </div>
                 </section>
                 <section id="guide-windows" class="centered stack-grid">
-                    <!-- <div id="guide-test" class="inactive">
+                    <!--
+                    <div id="guide-test" class="inactive">
                         <div class="guide-window">
 
                         </div>
-                    </div> -->
+                    </div>
+                    -->
                 </section>
             </div>
         </main>
@@ -356,4 +362,5 @@
 
     <script defer src="scripts/index.js"></script>
 </body>
+
 </html>
