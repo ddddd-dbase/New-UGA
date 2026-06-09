@@ -33,6 +33,9 @@ const themes = [
     "purple"
 ];
 
+// TODO: Edit this
+const LastUpdateTime = 0;
+
 let _activeWindow = "";
 let _activeGuide = "";
 
@@ -80,6 +83,11 @@ String.prototype.removePrefix = function (s) {
     if (pre === s)
         return this.slice(s.length, this.length);
     return this;
+}
+
+function showUpdatePrompt() {
+    // I don't actually know how the update prompt works ngl
+    // TODO: Implement this
 }
 
 function joinPath(p1, p2) {
@@ -536,6 +544,7 @@ async function downloadFile(rp, use_direct = false) {
     _activeWindow = getActiveWindow();
     updateWindows();
     applySettings();
+    showUpdatePrompt();
     initSettingsApplied = true;
 
     window.addEventListener("click", (ev) => {
