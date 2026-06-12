@@ -145,9 +145,13 @@
                                         <h1 class="win-header">
                                             Guides
                                         </h1>
-                                        <p class="win-subheader">
-                                            (Probably) Coming Soon
-                                        </p>
+                                        <div class="guides">
+                                            <button class="btn downloads" onclick="openGuide('downloads')">
+                                                <p>
+                                                    How to use downloadables
+                                                </p>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -469,6 +473,46 @@
                                         </button>
                                     </section>
                                 </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="centered stack-grid" id="guide-windows">
+                        <div class="inactive" id="guide-downloads">
+                            <div class="guide-window">
+                                <h1 class="win-header">
+                                    How to use downloadables
+                                </h1>
+                                <section class="content">
+                                    <p>
+                                        There are (in general) 3 different kinds of downloadables:
+                                    </p>
+                                    <ol class="downloads-types">
+                                        <li>
+                                            <p class="head">
+                                                Single-File
+                                            </p>
+                                            <p>
+                                                This is the simplest type of download, you will get a single file with the .html extension. All you need to do is double-click it to open it in your browser
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="head">
+                                                Static HTML
+                                            </p>
+                                            <p>
+                                                Another simple download, this one is just like the Single-File, but there will be more files. The one you're looking for is likely going to be named index.html
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="head">
+                                                Non-Static HTML
+                                            </p>
+                                            <p>
+                                                This one is quite a bit more complicated. First off, make sure you have Python installed. Type Win+R, type "powershell", and click enter. Then, type "python --version". If this gives you an error, you don't have python installed. To install it, go to your start menu and find "Software Center", from there, find Python. (It might be titled "Python Suite", or something similar). Once you have Python, go to the downloadable and double click the file called "main.py". From there, all you need to do is go to your browser and type "localhost"
+                                            </p>
+                                        </li>
+                                    </ol>
+                                </section>
                             </div>
                         </div>
                     </section>
