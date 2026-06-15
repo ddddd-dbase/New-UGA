@@ -112,7 +112,7 @@ async function showUpdatePrompt() {
         if (ts > new Date(LastUpdateTime)) {
             log(`Client version out of date!`, LogLevel.Warn);
         }
-    } catch(e) {
+    } catch (e) {
         log(`Failed to get latest update timestamp: ${e}`, LogLevel.Warn);
     }
 }
@@ -154,14 +154,12 @@ function getSetting(k) {
 function setSelectorValue(sel, v) {
     if ((sel instanceof HTMLInputElement) &&
         (sel.type == "checkbox") &&
-        (typeof v == "boolean"))
-    {
+        (typeof v == "boolean")) {
         sel.checked = v;
     } else if (
         (sel instanceof HTMLSelectElement) &&
-        (typeof v == "string"))
-    {
-        let optionExists = 
+        (typeof v == "string")) {
+        let optionExists =
             Array.from(sel.options).some(option => option.value == v);
         if (!optionExists) return;
 
@@ -393,7 +391,7 @@ function openGuide(guideId) {
     } else {
         let a = document.getElementById(`guide-${_activeGuide}`);
         if (a) a.classList.add("inactive");
-        
+
         let g = document.getElementById(`guide-${guideId}`);
         if (!g) return;
 
@@ -548,7 +546,7 @@ function inCurrentGuide(x, y) {
     let btnBox = getBoundingRect(`#section-guides .guides .${_activeGuide}`);
     if (!gBox || !btnBox) return true;
 
-    return inRect(x,y,gBox) || inRect(x,y,btnBox);
+    return inRect(x, y, gBox) || inRect(x, y, btnBox);
 }
 
 function isGuideOpen() {
@@ -598,7 +596,7 @@ async function downloadFile(rp, use_direct = false) {
         if (isWindowOpen() && !inCurrentWindow(ev.x, ev.y)) {
             makeActive("");
         }
-        
+
         if (isGuideOpen() && !inCurrentGuide(ev.x, ev.y)) {
             openGuide(_activeGuide);
         }

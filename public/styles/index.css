@@ -27,7 +27,10 @@
 body {
   overflow: hidden;
 }
-
+::selection{
+  background-color: var(--clr-surface-gray);
+  color:var(--clr-surface-dark);
+}
 #background {
   background-color: var(--clr-surface-dark);
   overflow-y: hidden;
@@ -126,19 +129,19 @@ body {
   align-items: center;
 }
 #info-box p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 1em;
   margin-bottom: 0px;
   margin-top: 0px;
 }
 #info-box a {
   color: var(--clr-surface-light);
-  font-size: 2rem;
+  font-size: 1.4rem;
   margin-top: 0px;
   font-weight: 900;
 }
 #info-box h2 {
-  font-size: 2rem;
+  font-size: 1.4rem;
   margin-top: 0px;
   font-weight: 900;
 }
@@ -607,6 +610,7 @@ body {
 }
 #window-settings .option .label input,
 #window-settings .option .label .selector {
+  font-family:var(--font-primary);
   accent-color: var(--clr-surface-1);
   margin: 0;
 }
