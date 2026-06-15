@@ -2,8 +2,6 @@
 
 A small thing for an unblocked game platform called UGA
 
-> It wasn't my fault I promise
-
 ## Building / Publishing
 
 You have 2 options:
