@@ -1,21 +1,21 @@
 :root {
-  --clr-surface-light: hsl(0, 0%, 100%);
+  --clr-surface-light: hsla(0, 0%, 100%, 0.8);
   --clr-surface-dark: hsl(215, 46%, 40%);
-  --clr-surface-gray: hsl(0, 0%, 56%);
+  --clr-surface-gray: hsl(0, 0%, 60%);
 
   --clr-surface-0: hsla(215, 46%, 43%, 0.7);
-  --clr-surface-1: hsl(0, 0%, 20%);
+  --clr-surface-1: hsla(221, 64%, 48%, 0.8);
 
-  --clr-primary-0: hsl(0, 0%, 100%);
+  --clr-primary-0: hsla(0, 0%, 100%, 0.9);
   --clr-primary-1: hsl(0, 0%, 100%);
 
-  --clr-shadow-dark: hsla(0, 0%, 0%, 40%);
+  --clr-shadow-dark: hsla(0, 0%, 33%, 0.4);
   --clr-shadow-0: hsla(0, 0%, 100%, 0.4);
   --clr-shadow-1: hsla(0, 0%, 71%, 0.1);
 
-  --clr-seman-err: hsl(193, 100%, 50%);
+  --clr-seman-err: hsl(34, 100%, 50%);
 
-  --clr-border-primary: hsla(0, 0%, 100%, 0.875);
+  --clr-border-primary: hsla(0, 0%, 100%, 0.8);
 
   --font-primary: "Audiowide", "Segoe UI", Tahoma, sans-serif;
 
