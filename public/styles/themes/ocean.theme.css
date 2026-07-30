@@ -1,25 +1,31 @@
 :root {
   --clr-surface-light: hsla(0, 0%, 100%, 0.8);
-  --clr-surface-dark: hsl(215, 46%, 40%);
+  --clr-surface-dark: hsla(215, 88%, 20%, 0.8);
   --clr-surface-gray: hsl(0, 0%, 60%);
 
-  --clr-surface-0: hsla(215, 46%, 43%, 0.7);
-  --clr-surface-1: hsla(221, 64%, 48%, 0.8);
+  --clr-surface-0: hsla(215, 41%, 35%, 0.6);
+  --clr-surface-1: hsla(221, 48%, 38%, 0.8);
 
   --clr-primary-0: hsla(0, 0%, 100%, 0.9);
   --clr-primary-1: hsl(0, 0%, 100%);
-
+ 
   --clr-shadow-dark: hsla(0, 0%, 33%, 0.4);
   --clr-shadow-0: hsla(0, 0%, 100%, 0.4);
   --clr-shadow-1: hsla(0, 0%, 71%, 0.1);
 
-  --clr-seman-err: hsl(34, 100%, 50%);
+  --clr-seman-err: hsla(34, 100%, 50%, 0.90);
 
   --clr-border-primary: hsla(0, 0%, 100%, 0.8);
-
-  --font-primary: "Audiowide", "Segoe UI", Tahoma, sans-serif;
-
-  --window-transition-duration: 350ms;
-
-  --page-tab-count: 6;
+  /*particles.js options - you can add more later, but this is a good start.*/
+  --particle-animation-speed:1;
+  --particle-line-distance:140;
+  --particle-node-size:1;
+  --particle-random-node-size:false;
+  --particle-random-color-mode:false;
+  --particle-count:160;
+  --particle-node-animate-opacity:false;
+  --particle-node-opacity:0.5;
+  --particle-line-animate-opacity:false;
+  --particle-line-opacity:0.5;
+  --particle-click-interactivity:true;
 }
