@@ -19,7 +19,7 @@
   /*particles.js options - you can add more later, but this is a good start.*/
   --particle-animation-speed:1;
   --particle-line-distance:140;
-  --particle-node-size:1;
+  --particle-node-size:1.5;
   --particle-random-node-size:false;
   --particle-random-color-mode:false;
   --particle-count:160;
