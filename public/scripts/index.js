@@ -1,11 +1,19 @@
 const windowIds = [
-    "ga-prox",
+    "ga",
+    "prox-tools",
     "downloads",
-    "tools",
     "bookmarklets",
     "info",
     "settings"
 ];
+/*
+ga
+Proxies / Tools
+Guides / Downloads
+Bookmarklets 
+Info
+Settings
+*/
 const guideIds = [
     "downloads",
 ];
@@ -13,8 +21,9 @@ const guideIds = [
 const urls = {
     "selenite": "https://mail.adriapartners.net",
     "prism": "https://schoolclassroomcanvacanvacodecom.7879.22web.org/",
-    "interstellar": "https://potato.wwe.ddnss.de",
+    //"interstellar": "https://potato.wwe.ddnss.de", WILL LIKELY BE UP WHEN SCHOOL STARTS, YOU CAN CHECK.
     "frogie": "https://mshjvxae.1vib36z.ddnss.de/",
+    "arctic": "https://quizizz.com/_media/arctic/ead256dc-0d87-4534-ad4f-106368554887-v2",
 
     "suggestions": "https://forms.office.com/r/Q1b91AwsJ1"
 };
@@ -24,13 +33,15 @@ const splashTexts = [
     ":D",
     "Welcome to Stop Codon Gąmes!",
     "Actually, we're the University of Georgia.",
-    "New update every Monday.",
     "I have a normal amount of hours in Cookie Clicker. (trust)",
-    "Free candy in settings*",
+    "We love piracy and you should too!",
+    "How is jsdelivr still online?",
+    "Blame gn-math for all the broken gąmes",
+    "I spent my time on the themes, so maybe use them."
 ];
 
 const themes = [
-    "purple"
+    "purple", "ocean"
 ];
 
 const LastUpdateTime = 0;
@@ -304,6 +315,228 @@ function closeIframe() {
     let home = document.getElementById("esc-wrapper");
     if (!home) return;
     home.classList.add("hide");
+    presenter.removeChild(iframe);//deletes the old iframe and makes a new one to make sure the inner document is empty.
+    iframe = document.createElement("iframe");
+    iframe.src = "";
+    iframe.allowFullscreen = true;
+    presenter.appendChild(iframe);
+}
+
+const zonesurls = [
+    //'Borrowing' sources. 
+    "https://cdn.jsdelivr.net/gh/freebuisness/assets@main/zones.json",
+    "https://cdn.jsdelivr.net/gh/freebuisness/assets@latest/zones.json",
+    "https://cdn.jsdelivr.net/gh/freebuisness/assets@master/zones.json",
+    "https://cdn.jsdelivr.net/gh/freebuisness/assets/zones.json",
+];
+let zonesURL = zonesurls[Math.floor(Math.random() * zonesurls.length)];
+let zones = [];
+
+function updatecover() {
+    const dropdown = document.getElementById("ga-list-select");
+    if (!dropdown) return;
+    const coverimg = document.getElementById('cover-img');
+    if (!coverimg) return;
+    if (dropdown.value != -1) {
+        if (!coverimg.style.display || coverimg.style.display == "none") {
+            coverimg.style.display = "block";
+        }
+        coverimg.src = zones[dropdown.value].cover;
+    } else {
+        coverimg.style.display = "none";
+    }
+}
+
+async function listZones() {
+    const listbtn = document.getElementById('list-btn');
+    listbtn.style.display = "none";
+
+
+    //This function could be a lot cleaner, but it works.
+    try {
+        //gn math's sha system to get the updated files
+        let sharesponse;
+        let shajson;
+        let sha;
+        try {
+            sharesponse = await fetch(
+                "https://api.github.com/repos/freebuisness/assets/commits?t=" +
+                Date.now(),
+            );
+        } catch (error) { }
+        if (sharesponse && sharesponse.status === 200) {
+            try {
+                shajson = await sharesponse.json();
+                sha = shajson[0]["sha"];
+                if (sha) {
+                    zonesURL = `https://cdn.jsdelivr.net/gh/freebuisness/assets@${sha}/zones.json`;
+                }
+            } catch (error) {
+                try {
+                    let secondarysharesponse = await fetch(
+                        "https://raw.githubusercontent.com/freebuisness/xml/refs/heads/main/sha.txt?t=" +
+                        Date.now(),
+                    );
+                    if (
+                        secondarysharesponse &&
+                        secondarysharesponse.status === 200
+                    ) {
+                        sha = (await secondarysharesponse.text()).trim();
+                        if (sha) {
+                            zonesURL = `https://cdn.jsdelivr.net/gh/freebuisness/assets@${sha}/zones.json`;
+                        }
+                    }
+                } catch (error) { }
+            }
+        }
+        const response = await fetch(zonesURL + "?t=" + Date.now()); //actually get the data.
+        const json = await response.json(); //json
+        zones = json;
+        zones.splice(0, 1); //Deletes the discord ad :) (it's always at position zero)
+    } catch (error) {
+        console.error(error);
+    }
+    const todisplay = document.getElementsByClassName("ga-area-hide");
+    for (let i = 0; i < todisplay.length; i++) { todisplay[i].style.display = "block" }
+    let newzone = [];
+    zones.forEach((file, index) => {
+        if (file.name != "[!] COMMENTS") {
+            //Remove comments.
+            newzone[index] = file;
+            newzone[index].url = newzone[index].url.replace(
+                "{HTML_URL}",
+                "https://cdn.jsdelivr.net/gh/freebuisness/html@main",
+            );
+            newzone[index].cover = newzone[index].cover.replace(
+                "{COVER_URL}",
+                "https://cdn.jsdelivr.net/gh/freebuisness/covers@main",
+            ); //Replace the url placeholders with the actual url.
+        }
+    });
+    newzone.sort((a, b) => a.name.localeCompare(b.name)); //sort
+    zones = newzone;
+    updatelist(zones);
+}
+
+function updatelist(list) {
+    const dropdown = document.getElementById("ga-list-select");
+    dropdown.options.length = 1;
+    for (i in list) {
+        if (list[i]) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.innerText = list[i].name;
+            dropdown.append(option);
+        }
+    }
+    updatecover()
+}
+
+function searchgalist() {
+    const box = document.getElementById("ga-search-box");
+    if (!box) return;
+    let tempzones = {};
+    for (let i = 0; i < zones.length; i++) {
+        if (zones[i] && zones[i].name.toLowerCase().includes(box.value)) {
+            tempzones[i] = zones[i];
+        }
+    }
+    //add a sorting thing later to make this feel better
+
+    //Something like sort for shortest would work, it's just the sorting kinda gets overridden by the layout of the object.
+    updatelist(tempzones);
+}
+
+async function downloadZone() {
+    const dropdown = document.getElementById("ga-list-select");
+    if (dropdown.value == -1) {
+        return;
+    }
+    const file = zones[dropdown.value];
+    const url = file.url;
+    fetch(url + "?t=" + Date.now()).then(res => res.text()).then(text => {
+        const blob = new Blob([text], {
+            type: "text/plain;charset=utf-8"
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.name + ".html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+}
+
+function openZone(mode) {
+    //Very badly written function as it was basically patched onto the gn-math one.
+    let home = document.getElementById("esc-wrapper");
+    if (!home) return;
+    home.classList.remove("hide");
+
+
+    let url;
+    if (mode == 'featured') {
+        url = "https://cdn.jsdelivr.net/gh/freebuisness/html@main/723.html"//Put the url of the featured ga here.
+    } else {
+        const dropdown = document.getElementById("ga-list-select");
+        const filepath = dropdown.value;
+
+        if (dropdown.value == -1) {
+            return;
+        }
+        const file = zones[filepath];
+        url = file.url;
+    }
+    fetch(url + "?t=" + Date.now())
+        .then((response) => response.text())
+        .then((html) => {
+            writeIframeDocument(html, "html")
+            setTimeout(() => {//Remove ads
+                let presenter = document.getElementById("content-presenter");
+                if (!presenter) return;
+                presenter.classList.remove("hidden");
+                let iframe = presenter.querySelector("iframe");
+                if (!iframe) return;
+                let ad1 = iframe.contentDocument.getElementById("sidebarad1");
+                let ad2 = iframe.contentDocument.getElementById("sidebarad2");
+                if (ad1 || ad2) {
+                    ad1.innerHTML = "";
+                    ad2.innerHTML = "";
+                    ad1.remove();
+                    ad2.remove();
+                }
+            }, 400);
+        })
+        .catch((error) => alert("Failed to load: " + error));
+}
+
+async function writeIframeDocument(content, mode) {
+    let home = document.getElementById("esc-wrapper");
+    if (!home) return;
+    home.classList.remove("hide");
+    let presenter = document.getElementById("content-presenter");
+    if (!presenter) return;
+    presenter.classList.remove("hidden");
+
+    let iframe = presenter.querySelector("iframe");
+    if (!iframe) return;
+
+    if (mode == "html") {
+        iframe.contentDocument.open();
+        iframe.contentDocument.write(content);
+        iframe.contentDocument.close();
+    } else if (mode == "path") {
+        let contentlink = joinPath(GithubUrl, content);
+        contentlink = `https://cdn.jsdelivr.net/gh/${contentlink}`;
+        console.log(contentlink)
+        fetch(contentlink).then(response => response.text()).then((textresponse) => {
+            iframe.contentDocument.open();
+            iframe.contentDocument.write(textresponse);
+            iframe.contentDocument.close();
+        });
+    }
 }
 
 function setActiveWindow(winId) {
@@ -401,9 +634,11 @@ function openGuide(guideId) {
 }
 
 function cloaxerPrompt() {
-    let input = document.querySelector("#window-tools .cloak-input");
+    let input = document.querySelector("#window-prox-tools .right .input-div .cloak-input");
     if (!input || input.value.trim() == "") return;
+
     let url = input.value;
+    if (!(url.includes("https://") || url.includes("http://"))) { url = "https://" + url }//appends https:// to urls where it isn't specified.
 
     openCloaked(url);
     input.value = "";
@@ -532,7 +767,7 @@ function inCurrentWindow(x, y) {
     let active = getActiveWindow();
     if (!active || active.trim() == "") return true;
 
-    let winBox = getBoundingRect(`#window-${active} .window-bound`);
+    let winBox = getBoundingRect(`#window-${active} .tab-window`);
     let tabBox = getBoundingRect(`#tab-${active}`);
     if (!winBox || !tabBox) return true;
 
@@ -575,7 +810,10 @@ async function downloadFile(rp, use_direct = false) {
     let link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
     link.download = name;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
 }
 
 (() => {
@@ -624,3 +862,98 @@ async function downloadFile(rp, use_direct = false) {
         splashText.textContent = choose(splashTexts);
     }
 })();
+
+const styles = window.getComputedStyle(document.documentElement);//Get the root styles. (currently used to set particle settings through css.)
+
+const defaultstyle = {//defaults for the particle styling.
+    "--particle-animation-speed": 2,
+    "--particle-animation": true,
+    "--particle-node-color": "#fff",
+    "--particle-line-color": "#fff",
+    "--particle-line-distance": 180,
+    "--particle-line-width": 1,
+    "--particle-node-size": 3,
+    "--particle-random-node-size": true,
+    "--particle-random-color-mode": false,
+    "--particle-count": 140,
+    "--particle-node-animate-opacity": true,
+    "--particle-node-opacity": 0.7,
+    "--particle-line-animate-opacity": true,
+    "--particle-line-opacity": 0.5,
+    "--particle-click-interactivity": true,
+    "--particle-interactivity": true,
+    "--particle-resize-interactivity": true,
+    "--particle-link": true
+};
+
+function getcssstyle(style) {
+    let data = styles.getPropertyValue(style);
+    data = !data ? defaultstyle[style] : data;
+    data = data == "true" ? true : data;//cleaning the data a bit to let the js understand it.
+    data = data == "false" ? false : data;
+    return data;
+}
+
+setTimeout(() => {//give it a bit of time for the theme to load.
+    particlesJS("particles-js", {
+        particles: {
+            color: getcssstyle("--particle-node-color"),
+            color_random: getcssstyle("--particle-random-color-mode"),
+            shape: "circle", // "circle", "edge" or "triangle"
+            opacity: {
+                opacity: getcssstyle('--particle-node-opacity'),
+                anim: {
+                    enable: getcssstyle("--particle-node-animate-opacity"),
+                    speed: 3,
+                    opacity_min: 0,
+                    sync: false,
+                },
+            },
+            size: getcssstyle("--particle-node-size"),
+            size_random: getcssstyle("--particle-random-node-size"),
+            nb: getcssstyle('--particle-count'),
+            line_linked: {
+                enable_auto: getcssstyle('--particle-link'),
+                distance: getcssstyle("--particle-line-distance"),
+                color: getcssstyle("--particle-line-color"),
+                opacity: getcssstyle("--particle-line-opacity"),
+                width: getcssstyle("--particle-line-width"),
+                condensed_mode: {
+                    enable: getcssstyle("--particle-line-animate-opacity"),
+                    rotateX: 600,
+                    rotateY: 600,
+                },
+            },
+            anim: {
+                enable: getcssstyle("--particle-animation"),
+                speed: getcssstyle('--particle-animation-speed'),
+            },
+        },
+        interactivity: {
+            enable: getcssstyle('--particle-interactivity'),
+            mouse: {
+                distance: 300,
+            },
+            detect_on: "window", // "canvas" or "window"
+            mode: "grab",
+            line_linked: {
+                opacity: 0.4,
+            },
+            events: {
+                onclick: {
+                    enable: getcssstyle("--particle-click-interactivity"),
+                    mode: "push", // "push" or "remove"
+                    nb: 3,
+                },
+                onresize: {
+                    enable: getcssstyle("--particle-resize-interactivity"),
+                    mode: "out", // "out" or "bounce"
+                    density_auto: false,
+                    density_area: 400, // nb_particles = particles.nb * (canvas width *  canvas height / 1000) / density_area
+                },
+            },
+        },
+        /* Retina Display Support */
+        retina_detect: true,
+    });
+}, 250)

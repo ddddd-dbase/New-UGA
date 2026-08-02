@@ -23,7 +23,6 @@
 
   --page-tab-count: 6;
 }
-
 body {
   overflow: hidden;
 }
@@ -53,7 +52,7 @@ body {
 
   color: var(--clr-surface-light);
   font-size: 0.8em;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   text-align: center;
   font-family: var(--font-primary);
 }
@@ -118,8 +117,8 @@ body {
 /*Title info area styles*/
 #title-info-area {
   position: absolute;
-  top: 55vh;
-  height: 35vh;
+  top: 60vh;
+  height: 30vh;
   color: var(--clr-primary-0);
   font-family: var(--font-primary);
   width: 100%;
@@ -136,9 +135,7 @@ body {
 }
 #info-box a {
   color: var(--clr-surface-light);
-  font-size: 1.4rem;
   margin-top: 0px;
-  font-weight: 900;
 }
 #info-box h2 {
   font-size: 1.4rem;
@@ -192,7 +189,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 4rem;
+  margin-bottom: 6.5rem;
 
   color: var(--clr-primary-0);
 }
@@ -317,17 +314,89 @@ body {
 
 /* TAB/CONTENT WINDOWS */
 
-#window-ga-prox .tab-window {
+#window-ga .tab-window {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
-
-#window-ga-prox .tab-window .win-header,
-#window-ga-prox .tab-window .win-subheader {
+#window-ga .right{
+  display:block;
+  direction:ltr;
+  max-width: 50%;
+}
+#window-ga .tab-window .win-header,
+#window-ga .tab-window .win-subheader {
   width: 100%;
   text-align: center;
+}
+#window-ga .option {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0em 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:1em;
+}
+#window-ga .option .selector {
+  font-family:var(--font-primary);
+  accent-color: var(--clr-surface-1);
+  margin: 0;
+  padding:0.2em 0em;
+  border: none;
+  border-radius: 2px;
+  background-color: var(--clr-surface-1);
+  color: var(--clr-surface-light);
+  max-width:20em;
+}
+
+#window-ga .option .ga-area-hide{
+  display:none;
+}
+
+#window-ga #cover-img{
+  font-family:var(--font-primary);
+  color:var(--clr-seman-err);
+  border: 1.5px solid var(--clr-border-primary);
+  border-radius: 10px;
+  corner-shape: bevel;
+  width:10em;
+  height:10em;
+  display:none;
+}
+
+#window-ga #open-btn{
+  padding: 0.7em 4em;
+  display:none;
+}
+#window-ga #list-btn{
+padding: 0.3em 4em;
+}
+
+#window-ga #download-btn{
+padding: 0.3em 4em;
+display:none;
+}
+
+#window-ga .selector-btn{
+box-shadow: inset 0 0 10px 3px var(--clr-shadow-1);
+}
+
+#window-ga #featured-selector-ga-div{
+  border: 1.5px solid var(--clr-border-primary);
+  display:flex;
+  padding:0.5em;
+  box-shadow: inset 0 0 20px 5px var(--clr-shadow-1);
+}
+
+#window-ga #featured-selector-ga-div button{
+width:20em;
+border: 1.5px solid var(--clr-surface-light);
+box-shadow:none;
+color:var(--clr-surface-light);
+border-radius: 10px;
+corner-shape: bevel;
 }
 
 .ga-prox-btns {
@@ -370,6 +439,7 @@ body {
   stroke: var(--clr-border-primary);
   stroke-width: 2;
 }
+
 
 #window-downloads .tab-window {
   display: flex;
@@ -436,38 +506,45 @@ body {
   text-shadow: 0 0 10px var(--clr-shadow-0);
 }
 
-#window-tools .tab-window {
+#window-prox-tools .tab-window {
   display: flex;
   flex-direction: column;
-  width: 40%;
   min-height: 0;
   padding-bottom: 2em;
   box-sizing: border-box;
 }
 
-#window-tools .win-subheader {
+#window-prox-tools .win-subheader {
   width: 100%;
   text-align: center;
 }
 
-#window-tools section {
+#window-prox-tools section {
   flex: 1 1 auto;
   min-height: 0;
-  overflow-y: auto;
   padding: 0em 4em;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#window-tools section .win-header {
+#window-prox-tools section .win-header {
+  text-align: center;
   font-size: 1.5em;
 }
-#window-tools section .win-subheader {
+#window-prox-tools section .win-subheader {
   text-align: center;
 }
 
-#window-tools footer {
+#window-prox-tools .right{
+  display:block;
+  direction:ltr;
+}
+
+#window-prox-tools .right .input-div .btn{
+  box-shadow: none;
+}
+#window-prox-tools .right .input-div{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -476,22 +553,15 @@ body {
   box-sizing: border-box;
   padding: 0em 1em;
 }
-#window-tools footer .btn {
-  padding: 0em 1.5em;
-  box-shadow: none;
-}
-#window-tools footer .btn p {
-  font-size: 1em;
-}
 
-#window-tools .err-display {
+#window-prox-tools .err-display {
   margin: 0;
   color: var(--clr-seman-err);
 }
-#window-tools .err-display.hidden {
+#window-prox-tools .err-display.hidden {
   visibility: hidden;
 }
-#window-tools .cloak-input {
+#window-prox-tools .right .input-div .cloak-input {
   margin: 0.5rem;
   background-color: var(--clr-surface-0);
   border: 1px solid var(--clr-border-primary);
@@ -502,9 +572,19 @@ body {
   max-width: 100%;
   box-sizing: border-box;
 }
+#window-prox-tools .separator {
+  height: 100%;
+  width: 2px;
+  border-radius: 2px;
+}
+#window-prox-tools .separator line {
+  stroke: var(--clr-border-primary);
+  stroke-width: 2;
+}
+
 
 #window-bookmarklets .tab-window {
-  width: 60%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -527,6 +607,7 @@ body {
 }
 
 #window-info .tab-window {
+  width:70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -534,6 +615,7 @@ body {
 
 #window-info section .win-header,
 #window-info section .win-subheader {
+
   text-align: center;
 }
 #window-info section h2.win-header {
@@ -545,17 +627,14 @@ body {
 
 #window-info section.changelog {
   min-width: 0;
-  margin-top: 2em;
-  padding: 0em 10em 2em 10em;
+  margin-top: 0em;
+  padding: 0em 5em 1.5em 5em;
   width: 100%;
   flex-grow: 1;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-}
-.changelog h1.win-header {
-  margin-bottom: 0;
 }
 .changelog h2.win-subheader {
   margin-top: 0;
@@ -580,8 +659,16 @@ body {
 .changelog article li::marker {
   content: "- ";
 }
+#window-info hr{
+  border: none;
+  height: 2px;
+  background-color: var(--clr-surface-gray);
+  width:90%;
+  margin: 1em auto;/*Line centering*/
+}
 
 #window-settings .tab-window {
+  width:50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -618,7 +705,7 @@ body {
   border: none;
   border-radius: 2px;
   background-color: var(--clr-surface-1);
-  color: white;
+  color: var(--clr-surface-light);
 }
 #window-settings .option .win-subheader {
   text-align: center;
