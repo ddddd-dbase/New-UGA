@@ -1,0 +1,32 @@
+:root {
+  --clr-surface-light: hsl(0, 0%, 0%);
+  --clr-surface-dark: hsl(0, 0%, 100%);
+  --clr-surface-gray: hsl(0, 0%, 31%);
+
+  --clr-surface-0: hsla(0, 0%, 60%, 0.5);
+  --clr-surface-1: hsl(0, 0%, 100%);
+
+  --clr-primary-0: hsl(0, 0%, 100%);
+  --clr-primary-1: hsl(0, 0%, 100%);
+
+  --clr-shadow-dark: hsla(0, 0%, 0%, 60%);
+  --clr-shadow-0: hsla(0, 0%, 0%, 0.3);
+  --clr-shadow-1: hsla(0, 0%, 18%, 0.1);
+
+  --clr-border-primary: hsla(0, 0%, 0%,40%);
+
+  --window-transition-duration: 150ms;
+
+  /*particles.js options - you can add more later, but this is a good start.*/
+  --particle-animation-speed:20;
+  --particle-line-distance:140;
+  --particle-node-size:5;
+  --particle-random-node-size:true;
+  --particle-random-color-mode:true;
+  --particle-count:300;
+  --particle-node-animate-opacity:false;
+  --particle-node-opacity:1;
+  --particle-line-animate-opacity:false;
+  --particle-line-opacity:0;
+  --particle-click-interactivity:true;
+}

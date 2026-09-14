@@ -19,25 +19,24 @@ const guideIds = [
 ];
 
 const urls = {
-    "selenite": "https://mail.adriapartners.net",
-    "prism": "https://schoolclassroomcanvacanvacodecom.7879.22web.org/",
+    "selenite": "https://potato.wwe.ddnss.de",
+    "arsenic": "https://cdn.jsdelivr.net/gh/daplayboicarti/arsenic/arsenic.svg",
     //"interstellar": "https://potato.wwe.ddnss.de", WILL LIKELY BE UP WHEN SCHOOL STARTS, YOU CAN CHECK.
     "frogie": "https://mshjvxae.1vib36z.ddnss.de/",
-    "arctic": "https://quizizz.com/_media/arctic/ead256dc-0d87-4534-ad4f-106368554887-v2",
-
     "suggestions": "https://forms.office.com/r/Q1b91AwsJ1"
 };
 
 const splashTexts = [
-    "Uga Booga.",
     ":D",
     "Welcome to Stop Codon Gąmes!",
-    "Actually, we're the University of Georgia.",
-    "I have a normal amount of hours in Cookie Clicker. (trust)",
     "We love piracy and you should too!",
-    "How is jsdelivr still online?",
     "Blame gn-math for all the broken gąmes",
-    "I spent my time on the themes, so maybe use them."
+    "I spent my time on the themes, so maybe use them.",
+    "Particles go weeeeeee.",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    "So, how's life?",
+    `${Math.random() * Math.random()}`,
+    '<b style="color:var(--clr-seman-err)">33,550,336</b>'
 ];
 
 const themes = [
@@ -859,7 +858,7 @@ async function downloadFile(rp, use_direct = false) {
 
     let splashText = document.getElementById("splash-text");
     if (splashText) {
-        splashText.textContent = choose(splashTexts);
+        splashText.innerHTML = choose(splashTexts);
     }
 })();
 

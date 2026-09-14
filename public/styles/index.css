@@ -141,6 +141,7 @@ body {
   font-size: 1.4rem;
   margin-top: 0px;
   font-weight: 900;
+  margin-bottom:0px;
 }
 #info-box {
   border: 1.5px solid var(--clr-border-primary);
@@ -153,9 +154,6 @@ body {
 }
 #info-box * {
   all: revert;
-}
-#ugaify-info-title {
-  margin-bottom: 0px;
 }
 #info-box div {
   width: 50%;
@@ -179,6 +177,16 @@ body {
   width: 100%;
 }
 
+#splash-text{
+  color: var(--clr-primary-0);
+  font-size: 0.8em;
+  text-align: center;
+  font-family: var(--font-primary);
+  margin-bottom: 6.5rem;
+  text-shadow:
+    0 0 50px var(--clr-shadow-0),
+    0 0 30px var(--clr-shadow-dark);
+}
 #title-wrapper {
   grid-area: 1/1;
   width: 100%;
@@ -188,9 +196,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  margin-bottom: 6.5rem;
-
   color: var(--clr-primary-0);
 }
 #page-title h1 {

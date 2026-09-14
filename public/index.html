@@ -45,8 +45,10 @@
           <section id="title-wrapper" class="centered">
             <div id="page-title">
               <h1>UGA</h1>
-              
             </div>
+            <p id="splash-text">
+
+            </p>
           </section>
           <section id="title-info-area" class="centered">
             <!--Just a small thing to display something new below the title, likely a banner for new things.-->
@@ -58,17 +60,12 @@
                   border-style: solid;
                   border-color: var(--clr-border-primary);
                 ">
-                <h2>Gąme Selector</h2>
-                <p>
-                  Basically the successor to embeded games, this lets you choose and load gąmes from gn-math's large collection. Try it out in the reorganized gąmes tab. 
-                </p>
+                <h2>Discord Server</h2>
               </div>
               <div>
-                <h2>Discord Server</h2>
                 <p>
                   We now have an official UGA Discord server! Expect teasers, new update announcements, and random stuff (like minigames). <a href="https://discord.gg/My5pVMRdg">Check it out here.</a>
                 </p>
-
               </div>
             </div>
           </section>
@@ -79,11 +76,14 @@
                     <h1 class="win-header">Gąmes</h1>
                   <div class="ga-prox-btns">
                     <div class="left">
-                      <button class="btn" onclick="openUrl('selenite')">
-                        <p>Selenite</p>
+                      <button class="btn" onclick="openUrl('arsenic')">
+                        <p>gn-math</p>
                       </button>
                       <button class="btn" onclick="writeIframeDocument('downloads/gnmath/singlefile.html','path')">
                         <p>gn-math</p>
+                      </button>
+                      <button class="btn" onclick="openUrl('selenite')">
+                        <p>Selenite</p>
                       </button>
                     </div>
                     <svg class="separator">
@@ -144,11 +144,8 @@
                         <button class="btn" onclick="openUrl('frogie')">
                           <p>Frogie's Arcade</p>
                         </button>
-                        <button class="btn" onclick="openUrl('arctic')">
-                          <p>Arctic</p>
-                        </button>
                         <button class="btn" onclick="writeIframeDocument('downloads/arctic/arctic.html','path')">
-                          <p>Arctic Fallback</p>
+                          <p>Arctic</p>
                         </button>
                       </div>
                         <svg class="separator">
@@ -347,6 +344,12 @@
                   <section class="changelog">
                     <h1 class="win-header">Changelog</h1>
                     <article>
+                      <h2>v1.3.1 - 9/13/2026</h2>
+                      <ul>
+                        <li>Added back splash texts.</li>
+                        <li>New 'Party' theme</li>
+                        <li>Link update (sadly, most are still broken.) - Added back Arsenic</li>
+                      </ul>
                       <h2>v1.3 - Summer 2026</h2>
                       <ul>
                         <li>Re-format of gąmes/pröxies tab, and tools tab</li>
@@ -492,6 +495,7 @@
                           <option value="default">Default</option>
                           <option value="purple">Purple</option>
                           <option value="ocean">Ocean Light</option>
+                          <option value="party">Party!</option>
                         </select>
                       </div>
                       <h1 class="win-subheader">
