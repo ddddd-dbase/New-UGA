@@ -14,7 +14,7 @@
   --clr-shadow-1: hsla(0, 0%, 71%, 0.1);
 
   --clr-seman-err: hsla(34, 100%, 50%, 0.90);
-
+  --window-transition-duration: 500ms;
   --clr-border-primary: hsla(0, 0%, 100%, 0.8);
   /*particles.js options - you can add more later, but this is a good start.*/
   --particle-animation-speed:1;
