@@ -40,7 +40,7 @@ const splashTexts = [
 ];
 
 const themes = [
-    "purple", "ocean"
+    "purple", "ocean", "party"
 ];
 
 const LastUpdateTime = 0;
